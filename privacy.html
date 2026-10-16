@@ -18,7 +18,8 @@ footer{border-top:1px solid #1b2945;margin-top:44px;padding-top:20px;color:var(-
 <body><main class="wrap">
 <a class="back" href="index.html">← <span>HoloSpot home</span></a>
 <p class="muted">HOLOSPOT</p><h1>Privacy Policy</h1>
-<p class="muted">Effective 16 October 2026 · applies to HoloSpot 1.4 for iPhone and to this website</p>
+<p class="muted">Draft for review · 16 October 2026</p>
+<div class="draft"><strong>Draft — not ready to publish.</strong> Before release, add the controller’s postal address and telephone number; confirm the intended age range, vendor access and international-transfer safeguards, and the analytics deletion process. These items are listed in PR #2.</div>
 
 <h2>Who is responsible</h2>
 <p>HoloSpot is made by Istvan Bagi, an individual developer, who is responsible for the personal data described here. For any question or request about your data, write to <a href="mailto:istvan.b.mail@gmail.com">istvan.b.mail@gmail.com</a>.</p>
@@ -27,12 +28,12 @@ footer{border-top:1px solid #1b2945;margin-top:44px;padding-top:20px;color:var(-
 <ul>
 <li>You can play without an account. Your game then stays on your iPhone.</li>
 <li>If you sign in with Apple, your progress, power-ups and scores are saved to our server in Frankfurt, so you can keep them on other devices. You can delete the account and its data in the app at any time.</li>
-<li>Anonymous play stats are sent only if you say yes. They never contain your name, email, Apple ID or Game Center ID, and you can turn them off in Settings at any time.</li>
+<li>Pseudonymous play analytics are sent only if you consent. They are grouped by a random installation ID, but are not linked to your name, email, Apple ID or Game Center ID. You can turn them off in Settings at any time.</li>
 <li>HoloSpot shows no ads and does not track you across other apps or websites.</li>
 </ul>
 
 <h2>What stays on your iPhone</h2>
-<p>Your progress, unlocked challenges, stars and scores, power-up counts, settings (for example the sound volume and your play-stats choice) and a record of your in-app purchase transactions are stored on your iPhone. Without an account none of this leaves the device. Deleting the app deletes it.</p>
+<p>Your progress, unlocked challenges, stars and scores, power-up counts, settings (for example the sound volume and your analytics choice) and a record of your in-app purchase transactions are stored on your iPhone. Without an account, these saved game and purchase records stay on the device; if you separately consent to analytics, the event data described below is sent to PostHog. Deleting the app removes the local data.</p>
 
 <h2>Account and cloud saves (optional)</h2>
 <p>If you choose <strong>Sign in with Apple</strong>, Apple tells us a stable identifier for your Apple account in this app and, the first time only, the first name you choose to share. HoloSpot does not ask Apple for your email address. With this we create your HoloSpot account and store:</p>
@@ -41,11 +42,18 @@ footer{border-top:1px solid #1b2945;margin-top:44px;padding-top:20px;color:var(-
 <li>your game progress, power-up inventory and scores, so they sync between your devices; if two devices disagree, we keep the replaced copy so you can restore it in the app (at most the 20 newest copies per kind of data);</li>
 <li>a Sign in with Apple token, encrypted, which we need to revoke your sign-in at Apple when you delete the account.</li>
 </ul>
-<p>This is stored with Amazon Web Services (AWS) in the eu-central-1 region (Frankfurt, Germany), using Amazon Cognito for the account and Amazon DynamoDB for the saves. We use it only to provide the account and the cloud saves you asked for.</p>
+<p>This is stored with Amazon Web Services (AWS) in the eu-central-1 region (Frankfurt, Germany), using Amazon Cognito for the account and Amazon DynamoDB for the saves. We use it only to provide the account and cloud saves you requested. The legal basis is that this processing is needed to provide those account and cloud-save features at your request.</p>
+<h2>Why we process personal data</h2>
+<ul>
+<li><strong>Account and cloud saves:</strong> to provide the optional account and synchronisation features you request.</li>
+<li><strong>Play analytics:</strong> your consent, which you can withdraw at any time.</li>
+<li><strong>Security, deletion markers and technical error logs:</strong> our legitimate interests in protecting the service, preventing a deleted account from being recreated by a device that is still signed in, and diagnosing technical faults. You may object to processing based on legitimate interests.</li>
+<li><strong>Game Center and App Store purchases:</strong> Apple processes the relevant account, score and payment information under its own terms and privacy notice. We receive or store only the information described in the sections above.</li>
+</ul>
 <p><strong>How long:</strong> until you delete the account. Deleting it removes the account and its data from our live database at once and revokes your Sign in with Apple token at Apple; if Apple cannot be reached, the encrypted token is kept in a retry queue for at most 14 days until the revocation succeeds. A marker that the account was deleted (its identifier and the deletion time) is kept for 30 days so that a device still signed in cannot recreate it. Our database's automatic backups can still contain deleted data for up to 35 days. Technical error logs of our server are kept for 30 days.</p>
 
-<h2>Anonymous play stats (only with your consent)</h2>
-<p>The first time you open HoloSpot it asks whether you want to share anonymous play stats. Nothing is collected or sent before you answer yes. If you agree, the app sends game events that help us find what is too hard or confusing:</p>
+<h2>Pseudonymous play analytics (only with your consent)</h2>
+<p>The first time you open HoloSpot it asks whether you want to share play analytics. Nothing is collected or sent before you answer yes. If you agree, the app sends game events that help us find what is too hard or confusing:</p>
 <ul>
 <li>tutorial steps started, completed or skipped;</li>
 <li>challenges started, completed, failed or left, with the challenge, attempts, moves, stars, power-ups used and play time;</li>
@@ -54,7 +62,7 @@ footer{border-top:1px solid #1b2945;margin-top:44px;padding-top:20px;color:var(-
 <li>power-ups used, and when a play session starts.</li>
 </ul>
 <p>Each event carries a random installation identifier created on your iPhone when you agree, a random play-session identifier, the app version and build, the iOS version and that the device is a phone. Events never contain your name, email, account identifier, Apple ID, Game Center ID or advertising identifier, nor anything you type. Location is not derived from your IP address, and our analytics project discards IP addresses.</p>
-<p>The stats are processed by PostHog, Inc. on its EU cloud, hosted by AWS in Frankfurt, Germany, and kept for 1 year. The legal basis is your consent. You can withdraw it at any time in <strong>Settings › Privacy</strong>: the app then stops sending stats and deletes the installation identifier and any unsent events. Stats already sent are not linked to you or your account, so we cannot single them out afterwards.</p>
+<p>PostHog, Inc. processes these events for us on its EU cloud, hosted by AWS in Frankfurt, Germany. We keep events for up to 1 year. Each random installation ID lets us group activity from the same installation, so these events are pseudonymous personal data rather than anonymous data; we do not link that ID to your account or name. You can withdraw consent at any time in <strong>Settings › Privacy</strong>. The app then stops sending analytics and deletes the local installation ID and any unsent events. Events already sent remain in PostHog until the stated retention period ends; they remain grouped under their random installation ID.</p>
 
 <h2>Game Center</h2>
 <p>If you are signed in to Game Center, HoloSpot sends your scores and achievements to Apple's Game Center and shows your Game Center nickname in the game. Game Center is a service of Apple, governed by Apple's privacy policy and your Game Center settings; we do not receive or store your Game Center identity on our server.</p>
@@ -68,12 +76,12 @@ footer{border-top:1px solid #1b2945;margin-top:44px;padding-top:20px;color:var(-
 <li><strong>Play stats:</strong> <strong>Settings › Privacy › Stop sharing stats</strong>.</li>
 <li><strong>Data on your iPhone only:</strong> delete the app.</li>
 </ul>
-<p>You can also write to us to ask for a copy of your data, to correct or delete it, or to object to its use. We will answer within one month. You also have the right to complain to the data protection authority of your country.</p>
+<p>You may ask us for access to your personal data, correction, erasure or restriction of processing. Where applicable, you may also request data portability, object to processing based on our legitimate interests, and withdraw consent at any time; withdrawing consent does not affect processing that took place before withdrawal. Write to <a href="mailto:istvan.b.mail@gmail.com">istvan.b.mail@gmail.com</a>. We will respond without undue delay and normally within one month. If a request is complex or there are many requests, we may extend that period by up to two further months and will tell you within the first month why. You may complain to your local data-protection authority. In Hungary, this is the National Authority for Data Protection and Freedom of Information (NAIH), 1055 Budapest, Falk Miksa utca 9–11; <a href="https://www.naih.hu/">naih.hu</a>.</p>
 
 <h2>Service providers</h2>
 <ul>
 <li><strong>Amazon Web Services</strong>: hosting of accounts and cloud saves (Frankfurt, Germany).</li>
-<li><strong>PostHog, Inc.</strong>: anonymous play stats, only with your consent (EU cloud, Frankfurt, Germany).</li>
+<li><strong>PostHog, Inc.</strong>: pseudonymous play analytics, only with your consent (EU cloud, Frankfurt, Germany).</li>
 <li><strong>Apple</strong>: Sign in with Apple, Game Center and App Store purchases, under Apple's own privacy policy.</li>
 <li><strong>GitHub</strong>: hosting of this website.</li>
 </ul>
@@ -82,8 +90,12 @@ footer{border-top:1px solid #1b2945;margin-top:44px;padding-top:20px;color:var(-
 <h2>This website</h2>
 <p>This website is a static page hosted on GitHub Pages. It uses no cookies, no analytics and no third-party content. GitHub, as the host, processes visitors' IP addresses to deliver and secure the site, under GitHub's privacy statement.</p>
 
+<h2>International transfers and children</h2>
+<p>Our stated AWS and PostHog hosting region is Frankfurt, Germany. The locations from which providers may access data, and any safeguards for transfers outside the European Economic Area, must be confirmed before publication. The intended age range and any child-directed use of HoloSpot must also be confirmed before publication.</p>
+
 <h2>Changes</h2>
 <p>When this policy changes, we update this page and its effective date.</p>
 
 <footer><a href="index.html">HoloSpot home</a> · <a href="terms.html">Terms &amp; Conditions</a></footer>
 </main></body></html>
+
